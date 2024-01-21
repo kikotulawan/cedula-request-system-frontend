@@ -5,7 +5,10 @@ const props = defineProps<{
  id: string;
  type: InputTypeHTMLAttribute;
  placeholder: string;
+ disabled?: boolean;
+ required?: boolean;
  errors?: string[];
+ label?: string;
 }>();
 
 const modelValue = defineModel();
@@ -14,15 +17,17 @@ const modelValue = defineModel();
  <div>
   <label
    :for="props.id"
-   class="sr-only"
-   >Email</label
+   v-if="label"
+   >{{ label }}</label
   >
   <div class="relative">
    <input
     v-model="modelValue"
     :id="props.id"
     :type="props.type"
-    class="w-full rounded-lg border border-gray-200 focus:outline-none focus:shadow-lg p-4 pe-12 text-sm shadow-sm"
+    :disabled="disabled"
+    :required="required"
+    class="w-full rounded-lg border border-gray-200 focus:outline-none focus:shadow-lg p-4 pe-4 text-sm shadow-sm"
     :class="{ 'border-red-500': !!errors }"
     :placeholder="props.placeholder"
    />

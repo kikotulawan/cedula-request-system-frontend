@@ -38,7 +38,7 @@ onUnmounted(() => {
     :light-theme="true"
     id="home-footer-cta-btn"
     text="Sign in to your account"
-    class="mt-8"
+    class="mt-8 mx-auto"
     @click="router.push({ name: RouteNames.LOGIN_ROUTE })"
    />
    <PrimaryButton
@@ -46,7 +46,7 @@ onUnmounted(() => {
     :light-theme="true"
     id="home-footer-cta-btn"
     text="Create an account"
-    class="mt-8"
+    class="mt-8 mx-auto"
     @click="router.push({ name: RouteNames.REGISTRATION_ROUTE })"
    />
    <div class="mt-14 xl:mt-20">

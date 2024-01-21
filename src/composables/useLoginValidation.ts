@@ -1,5 +1,8 @@
 import { ref, Ref, watch } from "vue";
 import { z, ZodFormattedError } from "zod";
+import { useAuthStore } from "@modules/auth/store";
+
+const { login } = useAuthStore();
 
 const UserDataKeys = z.object({
  email: z.string().min(1, { message: "Your email is required" }).email({ message: "Please enter a valid email" }),
@@ -9,7 +12,8 @@ const UserDataKeys = z.object({
 type UserData = z.infer<typeof UserDataKeys>;
 
 export function useLoginValidation() {
- const formSubmitted = ref<boolean>(false);
+ const form_submitted = ref<boolean>(false);
+ const is_loading = ref<boolean>(false);
  const userAccountData: Ref<UserData> = ref({
   email: "",
   password: "",
@@ -34,20 +38,30 @@ export function useLoginValidation() {
   }
  }
 
- function executeValidation(keys: UserData) {
-  formSubmitted.value = true;
+ function executeValidation(keys: UserData): boolean {
   const result = UserDataKeys.safeParse(keys);
 
-  if (result.success) return;
+  if (result.success) return true;
 
   const formatted = result.error.format();
   assignErrors(formatted);
+  return false;
  }
+
+ const loginAccount = async () => {
+  form_submitted.value = true;
+  if (!executeValidation(userAccountData.value)) return;
+
+  is_loading.value = true;
+  const res = await login(userAccountData.value);
+  if (res.status === 200) return window.location.reload();
+  is_loading.value = false;
+ };
 
  watch(
   () => userAccountData.value,
   (values) => {
-   if (formSubmitted.value) {
+   if (form_submitted.value) {
     resetErrors();
     executeValidation(values);
    }
@@ -59,5 +73,7 @@ export function useLoginValidation() {
   userAccountData,
   userAccountDataErrors,
   executeValidation,
+  loginAccount,
+  is_loading,
  };
 }

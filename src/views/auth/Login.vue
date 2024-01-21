@@ -6,10 +6,10 @@ import HomeFooter from "@components/HomeFooter.vue";
 import PrimaryButton from "@/components/PrimaryButton.vue";
 import PrimaryInput from "@/components/PrimaryInput.vue";
 
-const { userAccountData, userAccountDataErrors, executeValidation } = useLoginValidation();
+const { userAccountData, userAccountDataErrors, loginAccount, is_loading } = useLoginValidation();
 
-function submitForm() {
- executeValidation(userAccountData.value);
+async function submitForm() {
+ await loginAccount();
 }
 </script>
 
@@ -40,6 +40,7 @@ function submitForm() {
       id="email"
       placeholder="Enter your email"
       :errors="userAccountDataErrors.email"
+      :disabled="is_loading"
      />
      <PrimaryInput
       v-model="userAccountData.password"
@@ -47,6 +48,7 @@ function submitForm() {
       id="password"
       placeholder="Enter your password"
       :errors="userAccountDataErrors.password"
+      :disabled="is_loading"
      />
 
      <div class="flex flex-col items-center justify-between gap-6">
@@ -56,6 +58,7 @@ function submitForm() {
        :light-theme="false"
        id="login-btn"
        text="Sign In"
+       :loading="is_loading"
       />
       <p class="text-sm text-gray-500 flex-none">
        No account?

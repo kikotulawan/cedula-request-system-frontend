@@ -36,22 +36,22 @@ onMounted(() => {});
     Why EasyCedula?
    </h3>
    <div class="w-full flex flex-col lg:flex-row gap-10 items-stretch">
-    <div class="bg-white p-5">
+    <div class="bg-white shadow-lg rounded-lg p-5">
      <h1 class="text-xl lg:text-2xl text-center mb-5 font-bold mx-auto text-blue-500">Simple Online Process</h1>
      <p>
       Say goodbye to waiting in line for hours. With EasyCedula, you can request your Cedula from the comfort of your home or office. Our user-friendly interface makes the process straightforward and
       accessible.
      </p>
     </div>
-    <div class="bg-white p-5">
+    <div class="bg-white shadow-lg rounded-lg p-5">
      <h1 class="text-xl lg:text-2xl text-center mb-5 font-bold mx-auto text-blue-500">Fast and Efficient</h1>
      <p>No more delays. We understand the importance of your time. Our system is designed to process your Cedula request quickly, ensuring you receive it in a timely manner.</p>
     </div>
-    <div class="bg-white p-5">
+    <div class="bg-white shadow-lg rounded-lg p-5">
      <h1 class="text-xl lg:text-2xl text-center mb-5 font-bold mx-auto text-blue-500">Secure and Reliable</h1>
      <p>Your information is important to us. EasyCedula employs state-of-the-art security measures to safeguard your personal details throughout the request process.</p>
     </div>
-    <div class="bg-white p-5">
+    <div class="bg-white shadow-lg rounded-lg p-5">
      <h1 class="text-xl lg:text-2xl text-center mb-5 font-bold mx-auto text-blue-500">Accessible Anywhere</h1>
      <p>Whether you're at home, at work, or on the go, EasyCedula is accessible from any device with an internet connection. Request your Cedula whenever and wherever it suits you.</p>
     </div>
@@ -73,19 +73,19 @@ onMounted(() => {});
      />
     </div>
     <div class="w-full max-w-[500px] flex flex-col gap-3">
-     <div class="bg-white p-5">
+     <div class="bg-white shadow-lg rounded-lg p-5">
       <h1 class="text-xl lg:text-2xl mb-5 font-medium mx-auto text-blue-500">#1 - <span class="text-black">Create an Account</span></h1>
       <p>Sign up with EasyCedula to create your account. Provide the necessary information securely.</p>
      </div>
-     <div class="bg-white p-5">
+     <div class="bg-white shadow-lg rounded-lg p-5">
       <h1 class="text-xl lg:text-2xl mb-5 font-medium mx-auto text-blue-500">#2 - <span class="text-black">Submit Your Request</span></h1>
       <p>Fill out the Cedula request form with the required details and documents. Our intuitive interface ensures a smooth submission process.</p>
      </div>
-     <div class="bg-white p-5">
+     <div class="bg-white shadow-lg rounded-lg p-5">
       <h1 class="text-xl lg:text-2xl mb-5 font-medium mx-auto text-blue-500">#3 - <span class="text-black">Track Your Request</span></h1>
       <p>Stay informed about the status of your Cedula request. Track its progress through your EasyCedula account.</p>
      </div>
-     <div class="bg-white p-5">
+     <div class="bg-white shadow-lg rounded-lg p-5">
       <h1 class="text-xl lg:text-2xl mb-5 font-medium mx-auto text-blue-500">#4 - <span class="text-black">Receive Your Cedula</span></h1>
       <p>Once your request is processed, we'll notify you to your email address. Your Cedula will be scheduled for pickup.</p>
      </div>

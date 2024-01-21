@@ -2,8 +2,10 @@
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { RouteNames } from "@enums";
 import { useRoute, useRouter } from "vue-router";
+import { useAuthStore } from "@modules/auth/store";
+import { storeToRefs } from "pinia";
 
-import PrimaryButton from "@components/PrimaryButton.vue";
+const { user_info, userRole } = storeToRefs(useAuthStore());
 
 const router = useRouter();
 const route = useRoute();
@@ -32,23 +34,45 @@ onUnmounted(() => {
 
 <template>
  <div
-  class="h-[70px] w-full border-black fixed top-0 transition-all z-[100]"
-  :class="scrolled && ' bg-black'"
+  class="h-[70px] w-full fixed top-0 transition-all z-[100]"
+  :class="scrolled && ' bg-white shadow'"
  >
   <div class="container h-full mx-auto flex justify-between items-center p-3">
-   <a
-    href="/"
-    class="font-bold text-lg"
-    :class="scrolled && 'text-white'"
-    >EasyCedula.</a
+   <div class="inline-flex items-center gap-2">
+    <img
+     @click="router.push({ name: RouteNames.HOMEPAGE_ROUTE })"
+     class="cursor-pointer"
+     src="@assets/images/San-Miguel-Logo.png"
+     alt="sml logo"
+     width="30"
+    />
+    <a
+     href="/"
+     class="font-bold text-lg"
+     >EasyCedula.</a
+    >
+   </div>
+   <router-link
+    v-if="routeName !== RouteNames.LOGIN_ROUTE && !user_info"
+    :to="{ name: RouteNames.LOGIN_ROUTE }"
+    class="hover:text-blue-500 hover:font-semibold transition-all"
    >
-   <PrimaryButton
-    v-if="routeName !== RouteNames.LOGIN_ROUTE"
-    :light-theme="scrolled"
-    id="home-nav-register-btn"
-    text="Sign In"
-    @click="router.push({ name: RouteNames.LOGIN_ROUTE })"
-   />
+    Sign In
+   </router-link>
+   <router-link
+    v-if="user_info && userRole === 1"
+    :to="{ name: RouteNames.LOGIN_ROUTE }"
+    class="hover:text-blue-500 hover:font-semibold transition-all"
+   >
+    Admin Dashboard
+   </router-link>
+   <router-link
+    v-if="user_info && userRole === 2"
+    :to="{ name: RouteNames.LOGIN_ROUTE }"
+    class="hover:text-blue-500 hover:font-semibold transition-all"
+   >
+    My Requests
+   </router-link>
   </div>
  </div>
 </template>

@@ -28,7 +28,10 @@
       "@composables/*": ["./src/composables/*"],
       "@components/*": ["./src/components/*"],
       "@views/*": ["./src/views/*"],
-      "@stores/*": ["./src/stores/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@auth": ["./src/modules/auth/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@httpclient": ["./src/lib/http"],
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
